@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuntoMigrare - Consulenza Immigrazione e Servizi CAF</title>
+    <meta name="description" content="PuntoMigrare offre servizi di consulenza per immigrazione, pratiche CAF e patronato, e gestione di collaboratori domestici.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Custom CSS -->
+    <style>
+        /* --- Base & Typography --- */
+        :root {
+            --primary-blue: #1f618d;
+            --accent-orange: #f39c12;
+            --dark-text: #333;
+            --light-text: #f8f9fa;
+            --background-light: #f8f9fa;
+            --background-white: #ffffff;
+            --border-color: #dee2e6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--dark-text);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        h1 { font-size: 2.8rem; }
+        h2 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.2rem; }
+
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: 1200px;
+            z-index: 1000;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.4); /* 60% transparent */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        
+        .logo .logo-orange {
+            color: var(--accent-orange);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-orange);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--accent-orange);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(31, 97, 141, 0.7), rgba(31, 97, 141, 0.7)), url('https://placehold.co/1920x1080/2c3e50/ffffff?text=PuntoMigrare') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text);
+            padding-top: 80px; /* Offset for fixed header */
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            color: var(--light-text);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: var(--accent-orange);
+            color: var(--light-text) !important;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #d88c0a;
+            transform: translateY(-3px);
+        }
+
+        /* --- Services Section --- */
+        .service-block {
+            background-color: var(--background-white);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .service-header h3 {
+            margin: 0;
+        }
+
+        .pull-tab {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            transition: transform 0.4s ease;
+        }
+        
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding-top 0.5s ease-out;
+            border-top: 1px solid var(--border-color);
+            margin-top: 0;
+            padding-top: 0;
+        }
+        
+        .service-details.open {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+        }
+        
+        .service-block.open .pull-tab {
+            transform: rotate(180deg);
+        }
+
+        .service-details ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .service-details li {
+            background-color: var(--background-light);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .service-details a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+        }
+        
+        .service-details a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* --- Contact & Map Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        .address-info {
+            background: var(--background-white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        .address-info p {
+            margin: 0 0 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-family: 'Nunito Sans', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(31, 97, 141, 0.2);
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #154360;
+        }
+
+        /* --- Pre-Footer --- */
+        .pre-footer {
+            background-color: var(--background-white);
+            text-align: center;
+        }
+
+        .communication-channels {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .channel {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .channel:hover {
+            color: var(--accent-orange);
+        }
+
+        .channel i {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+        }
+        
+        .footer-container {
+            padding: 3rem 0 1rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-grid h4 {
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+        }
+
+        .footer-grid ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-grid ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-grid a {
+            color: var(--light-text);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-grid a:hover {
+            opacity: 1;
+        }
+
+        .social-media a {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--light-text);
+            text-decoration: underline;
+            margin: 0 0.5rem;
+        }
+
+        /* --- Cookie Banner --- */
+        #cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1001;
+            transform: translateY(100%);
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        #cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        #cookie-banner p {
+            margin: 0;
+        }
+
+        #cookie-accept-btn {
+            background-color: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 85px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                padding: 1rem 0;
+                border-radius: 0 0 20px 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container iframe {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            h2 { font-size: 1.8rem; }
+            
+            .container {
+                padding: 2rem 0;
+            }
+            
+            .communication-channels {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo"><span class="logo-orange">Punto</span>Migrare</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" class="active">Chi Siamo</a></li>
+                <li><a href="#services">Servizi</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 data-aos="zoom-in" data-aos-duration="1000">Il Tuo Punto di Riferimento per l'Immigrazione</h1>
+            <p>Offriamo consulenza esperta e assistenza completa per tutte le tue pratiche di immigrazione, CAF e servizi per la casa. Affidati a professionisti del settore.</p>
+            <a href="#services" class="cta-button">Scopri i Nostri Servizi</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- About Section -->
+        <section id="about" class="container">
+            <h2>Benvenuti a PuntoMigrare</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
+                PuntoMigrare nasce dall'esigenza di creare un unico punto di accesso affidabile e professionale per cittadini stranieri e italiani. La nostra missione è semplificare la burocrazia e offrire un supporto concreto per le pratiche di immigrazione, i servizi fiscali e di patronato (CAF), e la gestione dei collaboratori domestici. Con un team di esperti dedicati, garantiamo un servizio efficiente, trasparente e su misura per ogni cliente.
+            </p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="container">
+            <h2>I Nostri Servizi Principali</h2>
+            
+            <!-- Service Block 1: Immigration -->
+            <div class="service-block" id="service-immigration">
+                <div class="service-header">
+                    <h3><i class="fas fa-passport" style="color: var(--accent-orange); margin-right: 10px;"></i>Immigrazione</h3>
+                    <div class="pull-tab"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <p>Assistenza completa per tutte le pratiche relative all'ingresso e al soggiorno in Italia. Ti guidiamo passo dopo passo, dalla richiesta del visto al rinnovo del permesso di soggiorno.</p>
+                <div class="service-details">
+                    <ul>
+                        <li><a href="#">Richiesta Visto Turistico</a></li>
+                        <li><a href="#">Permesso di Soggiorno per Lavoro</a></li>
+                        <li><a href="#">Ricongiungimento Familiare</a></li>
+                        <li><a href="#">Richiesta Cittadinanza Italiana</a></li>
+                        <li><a href="#">Permesso di Soggiorno UE per Soggiornanti di Lungo Periodo</a></li>
+                        <li><a href="#">Conversione del Permesso di Soggiorno</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service Block 2: CAF Patronato -->
+            <div class="service-block" id="service-caf">
+                <div class="service-header">
+                    <h3><i class="fas fa-file-invoice-dollar" style="color: var(--accent-orange); margin-right: 10px;"></i>CAF e Patronato</h3>
+                    <div class="pull-tab"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <p>Offriamo un'ampia gamma di servizi fiscali e previdenziali per lavoratori, famiglie e pensionati. Ci occupiamo della compilazione di modelli e della gestione delle tue pratiche con INPS e Agenzia delle Entrate.</p>
+                <div class="service-details">
+                    <ul>
+                        <li><a href="#">Compilazione Modello 730 e Redditi PF</a></li>
+                        <li><a href="#">Calcolo e Dichiarazione ISEE</a></li>
+                        <li><a href="#">Domanda di Disoccupazione (NASpI)</a></li>
+                        <li><a href="#">Assegno Unico e Universale per i Figli</a></li>
+                        <li><a href="#">Pratiche di Pensione (vecchiaia, anzianità)</a></li>
+                        <li><a href="#">Successioni e Volture Catastali</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service Block 3: Collaboratori Domestici -->
+            <div class="service-block" id="service-domestic">
+                <div class="service-header">
+                    <h3><i class="fas fa-house-user" style="color: var(--accent-orange); margin-right: 10px;"></i>Collaboratori Domestici</h3>
+                    <div class="pull-tab"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <p>Gestione completa del rapporto di lavoro domestico per colf, badanti e babysitter. Dalla stipula del contratto all'elaborazione delle buste paga, pensiamo a tutto noi per garantirti tranquillità e regolarità.</p>
+                <div class="service-details">
+                    <ul>
+                        <li><a href="#">Assunzione e Contratto di Lavoro</a></li>
+                        <li><a href="#">Elaborazione Buste Paga Mensili</a></li>
+                        <li><a href="#">Calcolo Contributi INPS e Pagamento</a></li>
+                        <li><a href="#">Gestione Ferie, Malattia e Infortuni</a></li>
+                        <li><a href="#">Calcolo TFR (Trattamento di Fine Rapporto)</a></li>
+                        <li><a href="#">Cessazione del Rapporto di Lavoro</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container">
+            <h2>Contattaci o Vieni a Trovarci</h2>
+            <div class="contact-grid">
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2971.2594214036535!2d12.640400511328426!3d41.86576466606699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f7d3a70ac5bbd%3A0x2f05f29d16ecbfde!2sGruppo%20Europa%20Grotte%20Celoni!5e0!3m2!1sen!2sit!4v1752275550621!5m2!1sen!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="address-info">
+                        <h4>La Nostra Sede</h4>
+                        <p>📍 Via del Fuoco Sacro, 97 – 00133 Roma (RM)</p>
+                        <p><strong>Orari di Apertura:</strong></p>
+                        <p>Lunedì - Martedi - Giovedi: 09:00 - 18:00</p>
+                        <p>Mercoledi - Venerdi : 09:00 - 13:00</p>
+                        <p>Sabato - Domenica: Chiuso</p>
+                    </div>
+                </div>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Il Tuo Messaggio</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit">Invia Messaggio</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Pre-Footer -->
+        <section class="pre-footer container">
+            <h2>Altri Canali di Contatto</h2>
+            <div class="communication-channels">
+                <a href="https://wa.me/391234567890" target="_blank" class="channel">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="tel:+391234567890" class="channel">
+                    <i class="fas fa-phone"></i> Chiamaci
+                </a>
+                <a href="mailto:info@puntomigrare.it" class="channel">
+                    <i class="fas fa-envelope"></i> Inviaci una Email
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>PuntoMigrare</h4>
+                    <p>Il tuo partner affidabile per l'immigrazione e i servizi fiscali in Italia.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Link Utili</h4>
+                    <ul>
+                        <li><a href="#about">Chi Siamo</a></li>
+                        <li><a href="#services">Servizi</a></li>
+                        <li><a href="#">Domande Frequenti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contatti</h4>
+                     <ul>
+                        <li>Via del Fuoco Sacro, 97, 00133 Roma RM</li>
+                        <li>info@puntomigrare.it</li>
+                        <li>+39 012 345 6789</li>
+                    </ul>
+                    <a href="#contact" class="cta-button" style="display: inline-block; margin-top: 1rem;">Contattaci Ora</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Seguici</h4>
+                    <div class="social-media">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="copyright-year"></span> PuntoMigrare. Tutti i diritti riservati. | <a href="#">Privacy Policy</a> | <a href="#">Cookie Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner">
+        <p>Questo sito utilizza i cookie per migliorare la tua esperienza. Accettando, acconsenti al nostro utilizzo dei cookie.</p>
+        <button id="cookie-accept-btn">Accetta</button>
+    </div>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Initialize AOS
+            AOS.init();
+
+            // --- Mobile Menu (Hamburger) ---
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // --- Service Accordion (Pull Tabs) ---
+            const serviceBlocks = document.querySelectorAll('.service-block');
+
+            serviceBlocks.forEach(block => {
+                const header = block.querySelector('.service-header');
+                const details = block.querySelector('.service-details');
+
+                header.addEventListener('click', () => {
+                    const isOpen = block.classList.contains('open');
+                    
+                    // Close all other blocks
+                    serviceBlocks.forEach(b => {
+                        if (b !== block) {
+                            b.classList.remove('open');
+                            b.querySelector('.service-details').style.maxHeight = null;
+                        }
+                    });
+
+                    // Toggle current block
+                    if (isOpen) {
+                        block.classList.remove('open');
+                        details.style.maxHeight = null;
+                    } else {
+                        block.classList.add('open');
+                        details.style.maxHeight = details.scrollHeight + "px";
+                    }
+                });
+            });
+
+            // --- Copyright Year ---
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+            // --- Cookie Banner ---
+            const cookieBanner = document.getElementById('cookie-banner');
+            const acceptBtn = document.getElementById('cookie-accept-btn');
+
+            if (!localStorage.getItem('cookieAccepted')) {
+                setTimeout(() => {
+                    cookieBanner.classList.add('show');
+                }, 1000);
+            }
+
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('cookieAccepted', 'true');
+                cookieBanner.classList.remove('show');
+            });
+            
+        });
+    </script>
+
+</body>
+</html>
