@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Josefin+Slab:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@900&family=Alegreya:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -35,8 +35,8 @@
         }
 
         body {
-            font-family: 'Josefin Slab', serif; /* New Body Font */
-            font-weight: 600;
+            font-family: 'Alegreya', serif; /* New Body Font */
+            font-weight: 400;
             margin: 0;
             padding: 0;
             background-color: var(--background-light);
@@ -51,9 +51,9 @@
             padding: 4rem 0;
         }
 
-        h1, h2, h3, h4, .logo, .nav-links a {
-            font-family: 'Josefin Sans', sans-serif; /* New Heading Font */
-            font-weight: 700;
+        h1, h2, h3, h4, .logo, .nav-links a, .cta-button, .contact-form button {
+            font-family: 'Alegreya Sans', sans-serif; /* New Heading Font */
+            font-weight: 900; /* Black weight */
         }
         
         h1, h2, h3, h4 {
@@ -144,8 +144,8 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 25vw;
-            font-family: 'Josefin Sans', sans-serif;
-            font-weight: 700;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-weight: 900;
             color: rgba(255, 255, 255, 0.05);
             z-index: 1;
             user-select: none;
@@ -168,17 +168,21 @@
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7); /* Added shadow */
+            color: var(--light-text); /* Washed white color */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Dark shadow for visibility */
+            position: relative;
+            z-index: 1; /* Lower z-index for paragraph */
         }
 
         .cta-button {
             background-color: var(--accent-orange);
-            color: var(--light-text) !important;
+            color: var(--primary-blue) !important; /* Changed text color */
             padding: 1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
             transition: background-color 0.3s, transform 0.3s;
+            position: relative;
+            z-index: 2; /* Higher z-index for button */
         }
 
         .cta-button:hover {
@@ -253,7 +257,7 @@
         .service-details a {
             text-decoration: none;
             color: var(--dark-text);
-            font-weight: 600;
+            font-family: 'Alegreya Sans', sans-serif;
         }
         
         .service-details a:hover {
@@ -297,7 +301,7 @@
         .contact-form label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 600;
+            font-family: 'Alegreya Sans', sans-serif;
         }
 
         .contact-form input, .contact-form textarea {
@@ -305,7 +309,7 @@
             padding: 1rem;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            font-family: 'Josefin Slab', serif;
+            font-family: 'Alegreya', serif;
             font-size: 1rem;
         }
         
@@ -323,7 +327,6 @@
             background-color: var(--primary-blue);
             color: var(--light-text);
             font-size: 1.1rem;
-            font-weight: 700;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -349,7 +352,6 @@
             text-decoration: none;
             color: var(--dark-text);
             font-size: 1.1rem;
-            font-weight: 600;
             transition: color 0.3s;
         }
         
@@ -534,7 +536,7 @@
         <div class="hero-bg-text">PuntoMigrare</div>
         <div class="hero-content">
             <h1 data-aos="zoom-in" data-aos-duration="1000">Il Tuo Punto di Riferimento per un Nuovo Inizio</h1>
-            <p>Offriamo consulenza esperta e assistenza completa per tutte le tue pratiche di immigrazione, CAF e servizi per la casa. Affidati a professionisti del settore.</p>
+            <p data-aos="fade-up" data-aos-delay="200">Offriamo consulenza esperta e assistenza completa per tutte le tue pratiche di immigrazione, CAF e servizi per la casa. Affidati a professionisti del settore.</p>
             <a href="#services" class="cta-button">Scopri i Nostri Servizi</a>
         </div>
     </section>
