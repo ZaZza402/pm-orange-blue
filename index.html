@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Josefin+Slab:wght@600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -21,7 +21,7 @@
     <style>
         /* --- Base & Typography --- */
         :root {
-            --primary-blue: #1f618d;
+            --primary-blue: #154360; /* Darker Blue */
             --accent-orange: #f39c12;
             --dark-text: #333;
             --light-text: #f8f9fa;
@@ -35,7 +35,8 @@
         }
 
         body {
-            font-family: 'Nunito Sans', sans-serif;
+            font-family: 'Josefin Slab', serif; /* New Body Font */
+            font-weight: 600;
             margin: 0;
             padding: 0;
             background-color: var(--background-light);
@@ -50,9 +51,12 @@
             padding: 4rem 0;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Roboto', sans-serif;
+        h1, h2, h3, h4, .logo, .nav-links a {
+            font-family: 'Josefin Sans', sans-serif; /* New Heading Font */
             font-weight: 700;
+        }
+        
+        h1, h2, h3, h4 {
             color: var(--primary-blue);
         }
 
@@ -77,7 +81,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.4); /* 60% transparent */
+            background-color: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: 0.8rem 2rem;
@@ -87,7 +91,6 @@
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
             color: var(--primary-blue);
             text-decoration: none;
         }
@@ -107,7 +110,6 @@
         .nav-links a {
             text-decoration: none;
             color: var(--primary-blue);
-            font-weight: 600;
             transition: color 0.3s;
         }
 
@@ -124,7 +126,7 @@
 
         /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(rgba(31, 97, 141, 0.7), rgba(31, 97, 141, 0.7)), url('https://placehold.co/1920x1080/2c3e50/ffffff?text=PuntoMigrare') no-repeat center center/cover;
+            background: linear-gradient(rgba(21, 67, 96, 0.6), rgba(21, 67, 96, 0.6)), url('https://images.pexels.com/photos/3184438/pexels-photo-3184438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -132,21 +134,41 @@
             text-align: center;
             color: var(--light-text);
             padding-top: 80px; /* Offset for fixed header */
+            position: relative;
+            overflow: hidden; /* Contain the background text */
         }
         
+        .hero-bg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25vw;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.05);
+            z-index: 1;
+            user-select: none;
+            white-space: nowrap;
+        }
+
         .hero-content {
             max-width: 800px;
+            position: relative;
+            z-index: 2; /* Ensure content is above the background text */
         }
 
         .hero h1 {
-            color: var(--light-text);
+            color: var(--accent-orange); /* Changed to orange */
             font-size: 3.5rem;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Added shadow */
         }
 
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7); /* Added shadow */
         }
 
         .cta-button {
@@ -283,14 +305,14 @@
             padding: 1rem;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            font-family: 'Nunito Sans', sans-serif;
+            font-family: 'Josefin Slab', serif;
             font-size: 1rem;
         }
         
         .contact-form input:focus, .contact-form textarea:focus {
             outline: none;
             border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(31, 97, 141, 0.2);
+            box-shadow: 0 0 0 3px rgba(21, 67, 96, 0.2);
         }
 
         .contact-form button {
@@ -307,7 +329,7 @@
         }
 
         .contact-form button:hover {
-            background-color: #154360;
+            background-color: #0d2a3f;
         }
 
         /* --- Pre-Footer --- */
@@ -509,6 +531,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-bg-text">PuntoMigrare</div>
         <div class="hero-content">
             <h1 data-aos="zoom-in" data-aos-duration="1000">Il Tuo Punto di Riferimento per un Nuovo Inizio</h1>
             <p>Offriamo consulenza esperta e assistenza completa per tutte le tue pratiche di immigrazione, CAF e servizi per la casa. Affidati a professionisti del settore.</p>
@@ -598,8 +621,8 @@
                         <h4>La Nostra Sede</h4>
                         <p>📍 Via del Fuoco Sacro, 97 – 00133 Roma (RM)</p>
                         <p><strong>Orari di Apertura:</strong></p>
-                        <p>Lunedì - Martedi - Giovedi: 09:00 - 18:00</p>
-                        <p>Mercoledi - Venerdi : 09:00 - 13:00</p>
+                        <p>Lunedi - Martedi - Giovedi: 09:00 - 18:00</p>
+                        <p>Mercoledi - Venerdi: 09:00 - 13:00</p>
                         <p>Sabato - Domenica: Chiuso</p>
                     </div>
                 </div>
